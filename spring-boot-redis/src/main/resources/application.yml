@@ -1,0 +1,12 @@
+spring:
+  redis:
+    host: localhost # 默认localhost，可以不用配置
+    port: 6379      # 默认6379，可以不用配置
+    database: 0    # 默认第0个数据库，可以不用配置
+    password: pass4redis#123
+    lettuce:
+      pool:
+        max-active: 8 # 最大活跃数
+        min-idle: 0 #
+        max-idle: 8 #
+        max-wait: -1ms
