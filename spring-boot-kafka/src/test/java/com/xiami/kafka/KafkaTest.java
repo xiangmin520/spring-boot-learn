@@ -29,7 +29,7 @@ public class KafkaTest {
 	 */
 	@Test
 	public void testSendMsg() {
-		for (int i = 0; i < 1000; i++) {
+		for (int i = 0; i < 10; i++) {
 			User user = new User(i + 1, "xiami" + i, 26);
 			producer.sendMessage(user);
 		}

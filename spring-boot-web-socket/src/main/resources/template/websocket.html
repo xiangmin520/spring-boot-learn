@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>WebSocket</title>
+		<script type="text/javascript" src="../static/js/jquery-1.9.1.min.js"></script>
+		<script>
+			var socket = new WebSocket('ws://localhost:8089/websocket/register');
+
+			// 链接打开的监听事件
+			socket.onopen = function() {
+				console.log('WebSocket connection opened. Ready to send messages.');
+			};
+
+			// 接受到服务端消息的监听器
+			socket.onmessage = function(message) {
+				$("#servermsg").html(message.data);
+			};
+
+			// 发送一条消息到服务端
+			function sendMsg() {
+				socket.send('Hello, from WebSocket client!');
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" value="发送消息" onclick="sendMsg()"/>
+		
+		<span id="servermsg"></span>
+	</body>
+</html>

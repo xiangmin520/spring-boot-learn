@@ -24,6 +24,8 @@ public class Producer {
 
 	/** 消息TOPIC */
 	private static final String TOPIC = "user";
+
+	public static final String KAFKA_TOPIC_INTE_CONF_INFO_UPDATE = "inte_conf_info_update";
 	
 	private static final Gson gson = new Gson();
 	
@@ -33,7 +35,7 @@ public class Producer {
 	public void sendMessage(User user) {
 		String msg = gson.toJson(user);
 		// 发送消息，用户类的 json 作为消息体
-		ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(TOPIC, msg);
+		ListenableFuture<SendResult<String, String>> future = kafkaTemplate.send(KAFKA_TOPIC_INTE_CONF_INFO_UPDATE, msg);
 
 		// 监听回调
 		future.addCallback(new ListenableFutureCallback<SendResult<String, String>>() {
